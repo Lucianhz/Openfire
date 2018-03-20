@@ -8,6 +8,8 @@
     </decorator>
     <decorator name="none"/>
     <excludes>
+        <pattern>/plugins/restapi/v1/**</pattern>
+        <pattern>/plugins/restapi/view/*</pattern>
         <pattern>/setup/setup-completed.jsp*</pattern>
         <pattern>/setup/setup-ldap-server_test.jsp*</pattern>
         <pattern>/setup/setup-ldap-user_test.jsp*</pattern>
