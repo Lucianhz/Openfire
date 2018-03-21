@@ -65,14 +65,15 @@ if [ ! -z "$JPDA_ENABLED" ]; then
   if [ -z "$JPDA_OPTS" ]; then
     JPDA_OPTS="-agentlib:jdwp=transport=$JPDA_TRANSPORT,address=$JPDA_ADDRESS,server=y,suspend=$JPDA_SUSPEND"
   fi
+  JAVA_OPTS="$JPDA_OPTS"
 else
-  JPDA_OPTS=""
+  JAVA_OPTS=
 fi
 
 # default behaviour is to launch openfire
 if [[ -z ${1} ]]; then
   exec start-stop-daemon --start --chuid ${OPENFIRE_USER}:${OPENFIRE_USER} --exec /usr/bin/java -- \
-    ${JPDA_OPTS} \
+    ${JAVA_OPTS} \
     -server \
     -DopenfireHome="${OPENFIRE_DIR}" \
     -Dopenfire.lib.dir=${OPENFIRE_DIR}/lib \
