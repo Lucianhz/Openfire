@@ -52,9 +52,27 @@ rewire_openfire
 initialize_data_dir
 initialize_log_dir
 
+if [ ! -z "$JPDA_ENABLED" ]; then
+  if [ -z "$JPDA_TRANSPORT" ]; then
+    JPDA_TRANSPORT="dt_socket"
+  fi
+  if [ -z "$JPDA_ADDRESS" ]; then
+    JPDA_ADDRESS="localhost:8000"
+  fi
+  if [ -z "$JPDA_SUSPEND" ]; then
+    JPDA_SUSPEND="n"
+  fi
+  if [ -z "$JPDA_OPTS" ]; then
+    JPDA_OPTS="-agentlib:jdwp=transport=$JPDA_TRANSPORT,address=$JPDA_ADDRESS,server=y,suspend=$JPDA_SUSPEND"
+  fi
+else
+  JPDA_OPTS=""
+fi
+
 # default behaviour is to launch openfire
 if [[ -z ${1} ]]; then
   exec start-stop-daemon --start --chuid ${OPENFIRE_USER}:${OPENFIRE_USER} --exec /usr/bin/java -- \
+    ${JPDA_OPTS} \
     -server \
     -DopenfireHome="${OPENFIRE_DIR}" \
     -Dopenfire.lib.dir=${OPENFIRE_DIR}/lib \
