@@ -57,7 +57,7 @@ if [ ! -z "$JPDA_ENABLED" ]; then
     JPDA_TRANSPORT="dt_socket"
   fi
   if [ -z "$JPDA_ADDRESS" ]; then
-    JPDA_ADDRESS="localhost:8000"
+    JPDA_ADDRESS="8000"
   fi
   if [ -z "$JPDA_SUSPEND" ]; then
     JPDA_SUSPEND="n"
@@ -73,7 +73,7 @@ fi
 # default behaviour is to launch openfire
 if [[ -z ${1} ]]; then
   exec start-stop-daemon --start --chuid ${OPENFIRE_USER}:${OPENFIRE_USER} --exec /usr/bin/java -- \
-    ${JAVA_OPTS} \
+    "${JAVA_OPTS}" \
     -server \
     -DopenfireHome="${OPENFIRE_DIR}" \
     -Dopenfire.lib.dir=${OPENFIRE_DIR}/lib \
