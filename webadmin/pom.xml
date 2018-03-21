@@ -13,6 +13,7 @@
     <properties>
         <openfireHome>${project.parent.build.directory}/openfire</openfireHome>
         <warSourceDirectory>${project.basedir}/../src/web</warSourceDirectory>
+        <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
     <build>

@@ -447,4 +447,17 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <distributionManagement>
+        <repository>
+            <id>jc-nexus</id>
+            <name>Nexus Release Repository</name>
+            <url>http://repo.jiangcai.me:8082/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>jc-nexus</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://repo.jiangcai.me:8082/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>

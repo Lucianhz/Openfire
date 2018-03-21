@@ -163,6 +163,7 @@
 
         <!-- Versions -->
         <openfire.version>4.2.0</openfire.version>
+        <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
     <profiles>
