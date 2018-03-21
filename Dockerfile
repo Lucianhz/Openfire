@@ -5,7 +5,9 @@ RUN apt-get update -qq \
     && cd /usr/src \
     && ant -Dhalt.on.plugin.error=true -Dno.package=true -f build/build.xml dist.bin
 
-FROM openjdk:8-jre
+#FROM openjdk:8-jre
+FROM registry.cn-shanghai.aliyuncs.com/mingshz/openjdk-utf8:8-jre
+
 COPY --from=0 /usr/src/target/release/openfire /usr/local/openfire
 COPY --from=0 /usr/src/build/docker/entrypoint.sh /sbin/entrypoint.sh
 WORKDIR /usr/local/openfire
