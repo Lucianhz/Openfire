@@ -52,7 +52,7 @@ rewire_openfire
 initialize_data_dir
 initialize_log_dir
 
-if [ ! -z "$JPDA_ENABLED" ]; then
+if [ ! -z "$JPDA_ENABLED" ] || [ ! -z "$JPDA_ENABLE" ]; then
   if [ -z "$JPDA_TRANSPORT" ]; then
     JPDA_TRANSPORT="dt_socket"
   fi
