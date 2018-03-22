@@ -72,13 +72,22 @@ fi
 
 # default behaviour is to launch openfire
 if [[ -z ${1} ]]; then
-  exec start-stop-daemon --start --chuid ${OPENFIRE_USER}:${OPENFIRE_USER} --exec /usr/bin/java -- \
+    if [ ! -z "JAVA_OPTS" ]; then
+        exec start-stop-daemon --start --chuid ${OPENFIRE_USER}:${OPENFIRE_USER} --exec /usr/bin/java -- \
     "${JAVA_OPTS}" \
     -server \
     -DopenfireHome="${OPENFIRE_DIR}" \
     -Dopenfire.lib.dir=${OPENFIRE_DIR}/lib \
     -classpath ${OPENFIRE_DIR}/lib/startup.jar \
     -jar ${OPENFIRE_DIR}/lib/startup.jar ${EXTRA_ARGS}
+    else
+        exec start-stop-daemon --start --chuid ${OPENFIRE_USER}:${OPENFIRE_USER} --exec /usr/bin/java -- \
+    -server \
+    -DopenfireHome="${OPENFIRE_DIR}" \
+    -Dopenfire.lib.dir=${OPENFIRE_DIR}/lib \
+    -classpath ${OPENFIRE_DIR}/lib/startup.jar \
+    -jar ${OPENFIRE_DIR}/lib/startup.jar ${EXTRA_ARGS}
+    fi
 else
   exec "$@"
 fi
