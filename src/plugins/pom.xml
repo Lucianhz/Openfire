@@ -163,7 +163,7 @@
 
         <!-- Versions -->
         <openfire.version>4.2.2</openfire.version>
-        <maven.deploy.skip>true</maven.deploy.skip>
+        <!--<maven.deploy.skip>true</maven.deploy.skip>-->
     </properties>
 
     <profiles>
@@ -351,4 +351,17 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>jc-nexus</id>
+            <name>Nexus Release Repository</name>
+            <url>http://repo.jiangcai.me:8082/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>jc-nexus</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://repo.jiangcai.me:8082/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
