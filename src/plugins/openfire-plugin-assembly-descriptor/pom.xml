@@ -6,10 +6,28 @@
         <groupId>org.igniterealtime.openfire</groupId>
         <version>4.2.2</version>
     </parent>
+
+    <properties>
+        <maven.deploy.skip>false</maven.deploy.skip>
+    </properties>
+
     <groupId>org.igniterealtime.openfire.plugins</groupId>
     <artifactId>openfire-plugin-assembly-descriptor</artifactId>
     <name>Openfire Plugin Assembly Descriptor</name>
     <description>A shared assembly descriptor for Openfire plugins. See
         http://maven.apache.org/plugins/maven-assembly-plugin/examples/sharing-descriptors.html
     </description>
+
+    <distributionManagement>
+        <repository>
+            <id>jc-nexus</id>
+            <name>Nexus Release Repository</name>
+            <url>http://repo.jiangcai.me:8082/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>jc-nexus</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://repo.jiangcai.me:8082/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
